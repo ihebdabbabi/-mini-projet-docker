@@ -1,3 +1,4 @@
+version: '3.8'
 services:
   webpage:
     container_name: webpage
@@ -6,19 +7,19 @@ services:
       - USERNAME=toto
       - PASSWORD=python
     ports:
-      - 80:80
+      - "80:80"
     networks:
       - student-list-networks
     depends_on:
       - api
     volumes:
       - ./website:/var/www/html
-  
+
   api:
-    container_name: api 
-    image: api:v1.0
-    # ports:
-    #   - 5000
+    container_name: api
+    image: api-etudiants
+    #ports:
+      #- "5000:5000"
     volumes:
       - ./simple_api/student_age.json:/data/student_age.json
     networks:
